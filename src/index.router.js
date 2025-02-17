@@ -10,7 +10,10 @@ const initApp=(express ,app)=>{
 connectionDB();
 app.use(express.json());
 fileUpload();
-app.use(cors())
+app.use(cors());
+app.get("/",(req,res)=>{
+  return res.status(200).json({message:" welcome"})
+});
 app.use("/auth",routerAuth);
 app.use("/users",routerUser);
 app.use("/notes",routerNotes);

@@ -14,6 +14,9 @@ app.use(cors())
 app.use("/auth",routerAuth);
 app.use("/users",routerUser);
 app.use("/notes",routerNotes);
+app.get("*",(req,res)=>{
+  return res.status(400).json({message:"page not found"})
+});
 app.use((err ,req ,res ,next )=>{
   return res.status(err.statuscode).json({message:err.message})
 })
